@@ -30,7 +30,7 @@ git clone git@github.com:shamannexus/nespresso_mobile.git
 - Create a new virtual environment:
 
   ```
-  virtualenv venv
+    python -m venv venv
   ```
 
 - Activate the virtual environment:
