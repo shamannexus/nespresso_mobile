@@ -17,10 +17,9 @@ This repository contains automated tests for the Nespresso mobile application us
 
 1. **Clone the repository:**
   ```
-git clone <repository_url>
-cd <repository_name>
+git clone git@github.com:shamannexus/nespresso_mobile.git
   ```
-2. **Set up a virtual environment (optional but recommended):**
+2. **Set up a virtual environment:**
 
 - Install virtualenv if not already installed:
 
@@ -86,9 +85,9 @@ This will install all necessary Python packages including pytest and Appium-Pyth
 - Install the Nespresso APK using adb:
 
   ```
-  adb install <path_to_apk_file>
+  adb install packages/android_phone/Nespresso_3.35.5_APKPure.apk
   ```
-
+  
 ## Running Tests
 
 - **Run the test file:**
