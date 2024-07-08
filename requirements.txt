@@ -1,0 +1,2 @@
+pytest
+appium-python-client
