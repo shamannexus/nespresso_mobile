@@ -78,7 +78,16 @@ This will install all necessary Python packages including pytest and Appium-Pyth
   - `ANDROID_HOME` to the location of your Android SDK installation.
   - Update `PATH` to include the Android SDK tools and platform-tools directories.
 
-6. **Install Nespresso App on the device:**
+6. **Install and configure packages for ios**
+
+- Install ios-deploy
+  - npm install -g ios-deploy
+
+- Install ideviceinstaller
+  - brew install ideviceinstaller
+
+
+7. **Install Nespresso App on the device:**
 
 - Connect your Android device or start an Android emulator.
 - Ensure USB debugging is enabled on the device.
@@ -90,8 +99,13 @@ This will install all necessary Python packages including pytest and Appium-Pyth
   
 ## Running Tests
 
-- **Run the test file:**
+- **Run the test file for Android**
   ```
   cd tests/ 
-  pytest test_nespresso_app.py
+  pytest test_nespresso_app.py --platform=android
+  ```
+- **Run the test file for iOS**
+  ```
+  cd tests/ 
+  pytest test_nespresso_app.py --platform=ios
   ```

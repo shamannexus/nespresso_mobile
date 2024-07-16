@@ -5,14 +5,29 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from config import device_info, appium_port
+# from config import device_info, appium_port
+from config import appium_port
 
+from appium.options.android import UiAutomator2Options
+from appium.options.ios import XCUITestOptions
+from appium.webdriver import Remote
 
 class AppiumDriver:
 
-    def __init__(self, command_executor=f"http://localhost:{appium_port}/wd/hub"):
-        options = UiAutomator2Options().load_capabilities(device_info)
+    def __init__(self, device_info, command_executor=f"http://localhost:{appium_port}/wd/hub"):
+        if device_info['platformName'].lower() == 'android':
+            options = UiAutomator2Options().load_capabilities(device_info)
+        elif device_info['platformName'].lower() == 'ios':
+            options = XCUITestOptions().load_capabilities(device_info)
+        else:
+            raise ValueError("Unsupported platform specified")
         self.driver = Remote(command_executor=command_executor, options=options)
+
+# class AppiumDriver:
+#
+#     def __init__(self, command_executor=f"http://localhost:{appium_port}/wd/hub"):
+#         options = UiAutomator2Options().load_capabilities(device_info)
+#         self.driver = Remote(command_executor=command_executor, options=options)
 
     def find_element(self, locator):
         """

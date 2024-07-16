@@ -1,13 +1,13 @@
 import random
-
-from steps import NespressoAppSteps
+import pytest
 from utils import launch_app, close_app, reopen_app
 
 
+@pytest.mark.usefixtures("adb_install_apk", "appium_driver")
 class TestNespressoApp:
 
-    def test_register_and_tried_to_buy_product_with_invalid_card(self, adb_install_apk, appium_driver):
-        steps = NespressoAppSteps(appium_driver)  # Initialize the steps class
+    def test_register_and_tried_to_buy_product_with_invalid_card(self, appium_driver, steps_class):
+        steps = steps_class(appium_driver)  # Initialize the steps class
 
         # step 1: Access Nespresso app
         success = steps.handle_app_crash_on_launch()

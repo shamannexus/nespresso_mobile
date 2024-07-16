@@ -1,12 +1,13 @@
-import random
 import time
 
 from appium.webdriver.common.appiumby import AppiumBy
+from const import AndroidLocators as Locators
+from const import UserData
+from steps import NespressoAppSteps
 from utils import launch_app, close_app
-from const import Locators, UserData
 
 
-class NespressoAppSteps:
+class AndroidNespressoAppSteps(NespressoAppSteps):
 
     def __init__(self, appium_driver):
         self.driver = appium_driver
@@ -131,9 +132,13 @@ class NespressoAppSteps:
         self.driver.click_button(Locators.first_available_product_locator)
         self.driver.click_button(Locators.one_item_locator)
         self.driver.click_button(Locators.basket_locator)
+        time.sleep(3)
         self.driver.click_button_when_ready(Locators.continue_btn_locator)
+        time.sleep(3)
         self.driver.click_button_when_ready(Locators.boutique_radio_btn_locator)
+        time.sleep(3)
         self.driver.click_button_when_ready(Locators.gps_btn_locator)
+        time.sleep(3)
         self.driver.click_button_when_ready(Locators.first_shop_locator)
         self.driver.click_button_when_ready(Locators.continue_btn_locator)
         self.driver.click_button_when_ready(Locators.credit_card_radio_btn_locator)
